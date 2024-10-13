@@ -12,7 +12,6 @@
 
 
 ## CUDA GPU Host Initial Preparation
-CUDA GPU Host Initial Preparation¶
 If you are leveraging a Vitis AI Docker Image with CUDA-capable GPU acceleration, you must install the NVIDIA Container Toolkit, which enables GPU support inside the Docker container.
 
 For Ubuntu distributions, NVIDIA driver and Container Toolkit installation can generally be accomplished as in the following example (use sudo for non-root users):
@@ -46,9 +45,12 @@ Mon Oct 14 00:54:24 2024
 ```
 
 
+
+## Install Vitis-AI
 The first step is to clone and follow the install steps for Vitis AI on the host machine.
 ```
 git clone https://github.com/Xilinx/Vitis-AI
+cd Vitis-AI
 ```
 [Ubuntu Desktop LTS](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/1641152513/Kria+SOMs+Starter+Kits#Ubuntu-Desktop-LTS)
 
