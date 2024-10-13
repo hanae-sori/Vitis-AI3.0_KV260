@@ -266,9 +266,9 @@ There are some issues downloading the MNIST dataset due to server problems. Plea
 
 [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 
-[Vitis AI](https://xilinx.github.io/Vitis-AI/3.5/html/index.html)
+[Vitis AI 3.0](https://xilinx.github.io/Vitis-AI/3.0/html/index.html)
 
-[Vitis AI github](https://github.com/Xilinx/Vitis-AI)
+[Vitis AI 3.0 github](https://github.com/Xilinx/Vitis-AI/tree/3.0)
 
 [PYNQ](https://github.com/Xilinx/PYNQ/)
 
