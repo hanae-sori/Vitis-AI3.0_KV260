@@ -214,7 +214,49 @@ docker run --gpus all nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu20.04 nvidia-smi
 cd <Vitis-AI install path>/Vitis-AI
 ./docker_run.sh xilinx/vitis-ai-<pytorch|opt-pytorch|tensorflow2|opt-tensorflow2|tensorflow>-<cpu|gpu|rocm>:latest
 ```
-
+>```
+>==========
+>== CUDA ==
+>==========
+>
+>CUDA Version 11.3.1
+>
+>Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+>
+>This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+>By pulling and using the container, you accept the terms and conditions of this license:
+>https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+>
+>A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+>
+>Setting up root 's environment in the Docker container...
+> WARNING: You are running Vitis AI Docker container as root.
+>For security reasons, consider running as a regular user:
+>    $ sh docker_run.sh
+>
+>OR
+>
+>    $ docker run -e UID=$(id -u) -e GID=$(id -g) args...
+>
+>You will be running as vitis-ai-user with non-root UID/GID in Vitis AI Docker container.
+>
+>
+>==========================================
+>
+>__      ___ _   _                   _____
+>\ \    / (_) | (_)            /\   |_   _|
+> \ \  / / _| |_ _ ___ ______ /  \    | |
+>  \ \/ / | | __| / __|______/ /\ \   | |
+>   \  /  | | |_| \__ \     / ____ \ _| |_
+>    \/   |_|\__|_|___/    /_/    \_\_____|
+>
+>==========================================
+>
+>Docker Image Version: 3.0.0.001   (GPU)
+>Vitis AI Git Hash: 091f75041
+>Build Date: 2024-10-14
+>WorkFlow: pytorch
+>```
 
 
 * * *
