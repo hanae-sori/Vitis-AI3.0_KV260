@@ -145,7 +145,7 @@ There are some issues downloading the MNIST dataset due to server problems. Plea
 
 [Vitis AI](https://xilinx.github.io/Vitis-AI/3.5/html/index.html)
 
-[Kria-PYNQ](https://github.com/Xilinx/Kria-PYNQ)
+[Vitis AI github](https://github.com/Xilinx/Vitis-AI)
 
 [PYNQ](https://github.com/Xilinx/PYNQ/)
 
