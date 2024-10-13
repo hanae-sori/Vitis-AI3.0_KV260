@@ -52,7 +52,7 @@ The first step is to clone and follow the install steps for Vitis AI on the host
 git clone https://github.com/Xilinx/Vitis-AI
 cd Vitis-AI
 ```
-[Ubuntu Desktop LTS](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/1641152513/Kria+SOMs+Starter+Kits#Ubuntu-Desktop-LTS)
+[Vitis-AI github](https://github.com/Xilinx/Vitis-AI)
 
 
 
