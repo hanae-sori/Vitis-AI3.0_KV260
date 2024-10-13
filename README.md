@@ -10,7 +10,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 <div align="center">
-  <img width="100%" height="100%" src="docsrc/source/docs/reference/images/VAI_IDE.PNG">
+  <img width="100%" height="100%" src="VAI_IDE.PNG">
 </div>
 <br />
 
