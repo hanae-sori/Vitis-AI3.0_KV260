@@ -209,121 +209,12 @@ docker run --gpus all nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu20.04 nvidia-smi
 
 
 
-
-
-
-You can view the GUI (Ubuntu Desktop) on a monitor connected through the HDMI port on the FPGA board. However, for better convenience and control, I recommend using a Serial Terminal or connecting to the system via SSH for accessing and interacting with the environment. These methods tend to be more reliable, especially for remote management or troubleshooting purposes.
-
-### Terminal
->![MobaXterm logo](./xterm_logo.png)
->
->[MobaXterm](https://mobaxterm.mobatek.net/)
->Enhanced terminal for Windows with X11 server, tabbed SSH client, network tools and much more(UART)
-
->* Serial(UART) Communication
->
->Speed (Baudrate): 115,200
->
->Data Bits: 8
-> 
->Stop Bits: 1
-> 
->Parity: None
-> 
->Flow Control: None
-
-* Username: **ubuntu**
-* Password: **ubuntu**
-
+## Start the Docker for Vitis AI
 ```
-sudo apt install net-tools
+cd <Vitis-AI install path>/Vitis-AI
+./docker_run.sh xilinx/vitis-ai-<pytorch|opt-pytorch|tensorflow2|opt-tensorflow2|tensorflow>-<cpu|gpu|rocm>:latest
 ```
 
->* SSH
->  
->Use the Ubuntu username and password, and for the Remote host (IP address), find it using the `ifconfig` command in the terminal (either through the GUI or Serial Terminal) on the KV260. Make sure to set the port to 22.
->
->*To transfer files in `/root/jupyter_notebook/` using MobaXterm, you will need root SSH access permissions*
->
->```
->sudo passwd root # make root password
->sudo vim /etc/ssh/sshd_config
->```
-> * PermitRootLogin yes
->   
-> * PasswordAuthentication yes
->   
-> * ChallengeResponseAuthentication no
->
->```
->service sshd reload
->```
-
-```
-sudo dpkg-reconfigure -plow unattended-upgrades
-```
---`NO`
-```
-sudo apt-get install git
-sudo apt update
-sudo apt -f install
-sudo apt full-upgrade
-sudo snap install xlnx-config --classic --channel=2.x
-sudo xlnx-config.sysinit
-```
-
-### ** !Do not upgrade the Ubuntu version! **
-
-![ubuntu upgrade](./ubuntu_upgrade.png)
-
-### --keep the local version currently installed
-
-
-
-## Install PYNQ
-
-```
-git clone https://github.com/Xilinx/Kria-PYNQ.git
-cd Kria-PYNQ
-sudo bash install.sh -b KV260
-sudo apt autoremove
-sudo reboot
-```
-```
-sudo /usr/local/share/pynq-venv/bin/python3 -m pip install --upgrade pip
-sudo /usr/local/share/pynq-venv/bin/python3 -m pip install torch torchvision pillow opencv-python
-sudo /usr/local/share/pynq-venv/bin/python3 -m pip install --upgrade jupyter
-```
-
-
-
-## Test PYNQ
-```
-sudo ./selftest.sh #/path-Kria-PYNQ/ sudo ./home/ubuntu/Kria-PYNQ/selftest.sh
-```
-
-
-
-## Open Jupyter notebooks
-
-Open Chrome on a PC that is on the **Local Area Network** as the Kria and type this in the address bar:`kria:9090/lab`
-
-* Password: **xilinx**
-
-
-
-## OpenCV Face Detection Webcam.ipynb
-`/kv260/video/OpenCV Face Detection Webcam.ipynb`
-
-
-
-## OpenCV Face Detection Webcam.ipynb
-`/pynq-dpu/dpu_mnist_classifier.ipynb`
-> ----> 1 raw_data = mnist.test_images()
-> 
-> HTTPError: HTTP Error 403: Forbidden
-
-There are some issues downloading the MNIST dataset due to server problems. Please use the ipynb project that have uploaded.
 
 
 * * *
