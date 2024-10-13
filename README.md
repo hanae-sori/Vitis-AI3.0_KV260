@@ -25,6 +25,23 @@ apt purge nvidia* libnvidia*
 apt install nvidia-driver-xxx
 apt install nvidia-container-toolkit
 ```
+>**WSL2**
+>```
+>sudo apt-get update
+>sudo apt-get install ca-certificates curl gnupg
+>```
+> >```
+> >distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+> >&& curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey \
+> >| sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+> >&& curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+> >```
+>```
+>sudo apt-get update
+>sudo apt-get install nvidia-container-toolkit
+>sudo systemctl restart docker
+>```
+
 A simple test to confirm driver installation is to execute `nvidia-smi`. This command can be used as an initial test outside of the Docker environment, and also can be used as a simple test inside of a Docker container following the installation of Docker and the Nvidia Container Toolkit.
 >```
 >Mon Oct 14 00:54:24 2024
