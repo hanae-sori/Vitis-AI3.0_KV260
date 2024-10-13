@@ -152,12 +152,20 @@ sudo ./docker_build.sh -t <DOCKER_TYPE> -f <FRAMEWORK>
 ||tf2|TensorFlow 2 cpu-only|
 ||tf1|TensorFlow 1.15 cpu-only|
 ||||
-|gpu|pytorch|PyTorch with AI Optimizer CUDA-gpu|
+|gpu|pytorch|PyTorch CUDA-gpu|
+||opt_pytorch|PyTorch with AI Optimizer CUDA-gpu|
+||tf2|TensorFlow 2 CUDA-gpu|
 ||tf2|TensorFlow 2 with AI Optimizer CUDA-gpu|
+||tf1|TensorFlow 1.15 CUDA-gpu|
 ||tf1|TensorFlow 1.15 with AI Optimizer CUDA-gpu|
+
+||tf2|tf|
 ||||
-|rocm|pytorch|PyTorch with AI Optimizer ROCm-gpu|
-||tf2|TensorFlow 2 with AI Optimizer ROCm-gpu|
+|rocm|pytorch|PyTorch ROCm-gpu|
+||opt_pytorch|PyTorch with AI Optimizer ROCm-gpu|
+||tf2|TensorFlow 2 ROCm-gpu|
+||opt_tf2|TensorFlow 2 with AI Optimizer ROCm-gpu|
+
 
 ```
 docker run --gpus all nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu20.04 nvidia-smi
