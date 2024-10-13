@@ -1,4 +1,4 @@
-# Vitis-AI_kv260
+# Vitis-AI 3.0_kv260
 <table class="sphinxhide">
  <tr>
    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Vitis AI</h1><h0>Adaptable & Real-Time AI Inference Acceleration</h0>
@@ -8,6 +8,11 @@
 
 ![Release Version](https://img.shields.io/github/v/release/Xilinx/Vitis-AI)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+<div align="center">
+  <img width="100%" height="100%" src="docsrc/source/docs/reference/images/VAI_IDE.PNG">
+</div>
+<br />
 
 
 
