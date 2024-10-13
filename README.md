@@ -21,28 +21,28 @@ apt install nvidia-driver-xxx
 apt install nvidia-container-toolkit
 ```
 A simple test to confirm driver installation is to execute `nvidia-smi`. This command can be used as an initial test outside of the Docker environment, and also can be used as a simple test inside of a Docker container following the installation of Docker and the Nvidia Container Toolkit.
-```
-Mon Oct 14 00:54:24 2024
-+---------------------------------------------------------------------------------------+
-| NVIDIA-SMI 535.183.01             Driver Version: 565.90       CUDA Version: 12.7     |
-|-----------------------------------------+----------------------+----------------------+
-| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
-|                                         |                      |               MIG M. |
-|=========================================+======================+======================|
-|   0  NVIDIA GeForce RTX 3080        On  | 00000000:09:00.0  On |                  N/A |
-|  0%   51C    P8              41W / 370W |   2314MiB / 12288MiB |     30%      Default |
-|                                         |                      |                  N/A |
-+-----------------------------------------+----------------------+----------------------+
-
-+---------------------------------------------------------------------------------------+
-| Processes:                                                                            |
-|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
-|        ID   ID                                                             Usage      |
-|=======================================================================================|
-|    0   N/A  N/A       559      G   /Xwayland                                 N/A      |
-+---------------------------------------------------------------------------------------+
-```
+>```
+>Mon Oct 14 00:54:24 2024
+>+---------------------------------------------------------------------------------------+
+>| NVIDIA-SMI 535.183.01             Driver Version: 565.90       CUDA Version: 12.7     |
+>|-----------------------------------------+----------------------+----------------------+
+>| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+>| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+>|                                         |                      |               MIG M. |
+>|=========================================+======================+======================|
+>|   0  NVIDIA GeForce RTX 3080        On  | 00000000:09:00.0  On |                  N/A |
+>|  0%   51C    P8              41W / 370W |   2314MiB / 12288MiB |     30%      Default |
+>|                                         |                      |                  N/A |
+>+-----------------------------------------+----------------------+----------------------+
+>
+>+---------------------------------------------------------------------------------------+
+>| Processes:                                                                            |
+>|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+>|        ID   ID                                                             Usage      |
+>|=======================================================================================|
+>|    0   N/A  N/A       559      G   /Xwayland                                 N/A      |
+>+---------------------------------------------------------------------------------------+
+>```
 
 
 
