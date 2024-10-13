@@ -46,17 +46,6 @@ A simple test to confirm driver installation is to execute `nvidia-smi`. This co
 
 
 
-## Download the Repository
-The first step is to clone and follow the install steps for Vitis AI on the host machine.
-```
-git clone https://github.com/Xilinx/Vitis-AI
-cd Vitis-AI
-```
-[Vitis-AI github](https://github.com/Xilinx/Vitis-AI)
-
-
-
-
 ## Docker Install and Verification
 Before you install Docker Engine for the first time on a new host machine, you need to set up the Docker repository. Afterward, you can install and update Docker from the repository.
 1. Set up Docker's `apt` repository.
@@ -117,6 +106,46 @@ docker --version
 >```
 >Docker version 27.3.1, build ce12230
 >```
+
+
+
+## Install Vitis-AI
+The first step is to clone and follow the install steps for Vitis AI on the host machine.
+```
+git clone https://github.com/Xilinx/Vitis-AI
+cd Vitis-AI
+```
+[Vitis-AI github](https://github.com/Xilinx/Vitis-AI)
+## Build the Docker Container from Xilinx Recipes
+This script enables developers to build a container for a specific framework. This single unified script supports CPU-only hosts, GPU-capable hosts, and AMD ROCm-capable hosts.
+* The Docker daemon always runs as the `root` user. 
+```
+cd <Vitis-AI install path>/Vitis-AI/docker
+sudo ./docker_build.sh -t <DOCKER_TYPE> -f <FRAMEWORK>
+```
+#### Vitis AI Docker Container Build Options
+|DOCKER_TYPE (-t)|TARGET_FRAMEWORK (-f)|Desired Environment|
+|------|---|---|
+|cpu|pytorch|PyTorch cpu-only|
+||tf2|TensorFlow 2 cpu-only|
+||tf1|TensorFlow 1.15 cpu-only|
+||||
+|gpu|pytorch|PyTorch with AI Optimizer CUDA-gpu|
+||tf2|TensorFlow 2 with AI Optimizer CUDA-gpu|
+||tf1|TensorFlow 1.15 with AI Optimizer CUDA-gpu|
+||||
+|rocm|pytorch|PyTorch with AI Optimizer ROCm-gpu|
+||tf2|TensorFlow 2 with AI Optimizer ROCm-gpu|
+
+
+
+
+
+
+
+
+
+
 
 You can view the GUI (Ubuntu Desktop) on a monitor connected through the HDMI port on the FPGA board. However, for better convenience and control, I recommend using a Serial Terminal or connecting to the system via SSH for accessing and interacting with the environment. These methods tend to be more reliable, especially for remote management or troubleshooting purposes.
 
