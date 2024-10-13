@@ -115,7 +115,7 @@ docker --version
 
 
 ## Install Vitis-AI
-The first step is to clone and follow the install steps for `Vitis AI 3.0`(**not 3.5) on the host machine.
+The first step is to clone and follow the install steps for `Vitis AI 3.0`(**not 3.5**) on the host machine.
 ```
 git clone --branch 3.0 https://github.com/Xilinx/Vitis-AI
 cd Vitis-AI
