@@ -159,10 +159,45 @@ sudo ./docker_build.sh -t <DOCKER_TYPE> -f <FRAMEWORK>
 |rocm|pytorch|PyTorch with AI Optimizer ROCm-gpu|
 ||tf2|TensorFlow 2 with AI Optimizer ROCm-gpu|
 
-
-
-
-
+```
+docker run --gpus all nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu20.04 nvidia-smi
+```
+>```
+>==========
+>== CUDA ==
+>==========
+>
+>CUDA Version 11.3.1
+>
+>Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+>
+>This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+>By pulling and using the container, you accept the terms and conditions of this license:
+>https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+>
+>A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+>
+>Sun Oct 13 18:19:11 2024
+>+-----------------------------------------------------------------------------------------+
+>| NVIDIA-SMI 565.51.01              Driver Version: 565.90         CUDA Version: 12.7     |
+>|-----------------------------------------+------------------------+----------------------+
+>| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+>| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+>|                                         |                        |               MIG M. |
+>|=========================================+========================+======================|
+>|   0  NVIDIA GeForce RTX 3080        On  |   00000000:09:00.0  On |                  N/A |
+>|  0%   50C    P8             40W /  370W |    2345MiB /  12288MiB |     24%      Default |
+>|                                         |                        |                  N/A |
+>+-----------------------------------------+------------------------+----------------------+
+>
+>+-----------------------------------------------------------------------------------------+
+>| Processes:                                                                              |
+>|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+>|        ID   ID                                                               Usage      |
+>|=========================================================================================|
+>|    0   N/A  N/A       559      G   /Xwayland                                   N/A      |
+>+-----------------------------------------------------------------------------------------+
+>```
 
 
 
