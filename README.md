@@ -275,7 +275,7 @@ There are some issues downloading the MNIST dataset due to server problems. Plea
 
 [Vitis AI 3.0 github](https://github.com/Xilinx/Vitis-AI/tree/3.0)
 
-[PYNQ](https://github.com/Xilinx/PYNQ/)
+[Vitis-AI Tutorials github](https://github.com/Xilinx/Vitis-AI-Tutorials/tree/3.0)
 
 * * *
 * * *
