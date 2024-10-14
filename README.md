@@ -283,6 +283,10 @@ There is a bit of an issue. System tools are required.
 >```
 * **Solution**
 ```
+sudo apt-get install -y xterm texinfo gcc-multilib
+
+# or
+
 sudo apt-get install -y gcc git make net-tools libncurses5-dev tftpd zlib1g-dev libssl-dev flex
 bison libselinux1 gnupg wget diffstat chrpath socat xterm autoconf libtool tar unzip texinfo
 ```
