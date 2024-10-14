@@ -290,6 +290,31 @@ sudo apt-get install -y xterm texinfo gcc-multilib
 sudo apt-get install -y gcc git make net-tools libncurses5-dev tftpd zlib1g-dev libssl-dev flex
 bison libselinux1 gnupg wget diffstat chrpath socat xterm autoconf libtool tar unzip texinfo
 ```
+>```
+>PetaLinux CMD tools installer version 2024.1
+>============================================
+>[INFO] Checking free disk space
+>[INFO] Checking installed tools
+>[INFO] Checking installed development libraries
+>[INFO] Checking network and other services
+>[WARNING] No tftp server found - please refer to "UG1144  PetaLinux Tools Documentation Reference Guide" for its impact and solution
+>
+>LICENSE AGREEMENTS
+>
+>PetaLinux SDK contains software from a number of sources.  Please review
+>the following licenses and indicate your acceptance of each to continue.
+>
+>You do not have to accept the licenses, however if you do not then you may
+>not use PetaLinux SDK.
+>
+>Use PgUp/PgDn to navigate the license viewer, and press 'q' to close
+>
+>Press Enter to display the license agreements
+>Do you accept Xilinx End User License Agreement? [y/N] > y
+>Do you accept Third Party End User License Agreement? [y/N] > y
+>Enter target directory for SDK (default: /*** user path ***/tools): /*** Xilinx path = /tools/Xilinx/ ***/PetaLinux
+>
+>```
 
 
 * * *
