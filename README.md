@@ -259,6 +259,35 @@ cd <Vitis-AI install path>/Vitis-AI
 >```
 
 
+
+## Start the Docker for Vitis AI
+```
+./petalinux-v2024.1-05202009-installer.run
+```
+There is a bit of an issue. System tools are required.
+>```
+>PetaLinux CMD tools installer version 2024.1
+>============================================
+>[INFO] Checking free disk space
+>[INFO] Checking installed tools
+>[ERROR] You are missing the following system tools required by PetaLinux:
+>
+> - xterm
+> - texinfo
+> - gcc-multilib
+>Please check PetaLinux installation guide - required tools and libraries package section for detailed information
+>
+>[INFO] Checking installed development libraries
+>Please install them with your operating system package manager, and try again
+>ERROR: Please install required packages.
+>```
+* **Solution**
+```
+sudo apt-get install -y gcc git make net-tools libncurses5-dev tftpd zlib1g-dev libssl-dev flex
+bison libselinux1 gnupg wget diffstat chrpath socat xterm autoconf libtool tar unzip texinfo
+```
+
+
 * * *
 ## Reference
 
