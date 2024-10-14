@@ -261,9 +261,13 @@ cd <Vitis-AI install path>/Vitis-AI
 
 
 ## Start the Docker for Vitis AI
+### cross-compiler(PetaLinux) Install
+[PetaLinux 2024.1](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html)
 ```
 ./petalinux-v2024.1-05202009-installer.run
 ```
+
+* * *
 There is a bit of an issue. System tools are required.
 >```
 >PetaLinux CMD tools installer version 2024.1
@@ -290,6 +294,8 @@ sudo apt-get install -y xterm texinfo gcc-multilib
 sudo apt-get install -y gcc git make net-tools libncurses5-dev tftpd zlib1g-dev libssl-dev flex
 bison libselinux1 gnupg wget diffstat chrpath socat xterm autoconf libtool tar unzip texinfo
 ```
+* * *
+
 >```
 >PetaLinux CMD tools installer version 2024.1
 >============================================
@@ -312,9 +318,53 @@ bison libselinux1 gnupg wget diffstat chrpath socat xterm autoconf libtool tar u
 >Press Enter to display the license agreements
 >Do you accept Xilinx End User License Agreement? [y/N] > y
 >Do you accept Third Party End User License Agreement? [y/N] > y
->Enter target directory for SDK (default: /*** user path ***/tools): /*** Xilinx path = /tools/Xilinx/ ***/PetaLinux
+>Enter target directory for SDK (default: /$ user path $/tools): /$ Xilinx path = /tools/Xilinx/ $/PetaLinux
 >
 >```
+```
+vim ~/.bashrc
+```
+>```
+> source /$ Xilinx path $/PetaLinux/tool/settings.sh
+>```
+```
+source ~/.bashrc
+```
+>```
+>*************************************************************************************************************************************************
+>The PetaLinux source code and images provided/generated are for demonstration purposes only.
+>Please refer to https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/2741928025/Moving+from+PetaLinux+to+Production+Deployment
+> for more details
+>*************************************************************************************************************************************************
+>PetaLinux environment set to '/home/hanaesori/tools/Xilinx/PetaLinux/2024.1/tool'
+>WARNING: /bin/sh is not bash!
+>bash is PetaLinux recommended shell. Please set your default shell to bash.
+>[INFO] Checking free disk space
+>[INFO] Checking installed tools
+>[INFO] Checking installed development libraries
+>[INFO] Checking network and other services
+>[WARNING] No tftp server found - please refer to "UG1144 2024.1 PetaLinux Tools Documentation Reference Guide" for its impact and solution
+>```
+```
+<Vitis-AI install path>/Vitis-AI $  ./docker_run.sh xilinx/vitis-ai-<FRAMEWORK>-<DOCKER_TYPE>:latest
+vitis-ai-user@[HOST]:/workspace $ conda activate vitis-ai-pytorch
+(vitis-ai-pytorch) vitis-ai-user@[HOST]:/workspace $ cd examples/vai_runtime/resnet50_pt
+```
+>```
+>ls
+>```
+> *** `resnet50_pt` ***
+>```
+>rm resnet50_pt
+>```
+```
+(vitis-ai-pytorch) vitis-ai-user@[HOST]:/workspace/examples/vai_runtime/resnet50_pt $ bash -x build.sh
+```
+>```
+>ls
+>```
+> *** `resnet50_pt` ***
+
 
 
 * * *
