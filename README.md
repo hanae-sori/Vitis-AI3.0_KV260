@@ -16,6 +16,12 @@
 
 
 
+## Version and Compatibility
+
+As the user must incorporate the IP into the Vivado IP catalog themselves, it is very important to understand that the designs and IP on this page are specific to Vitis AI v3.0 and were verified with Vivado and Vitis 2022.2.  If you are using a different version of Vitis or Vivado, please refer to [IP and Tool Version Compatibility](https://xilinx.github.io/Vitis-AI/3.0/html/docs/reference/version_compatibility.html) for additional information.
+
+
+
 ## CUDA GPU Host Initial Preparation
 If you are leveraging a Vitis AI Docker Image with CUDA-capable GPU acceleration, you must install the NVIDIA Container Toolkit, which enables GPU support inside the Docker container.
 
