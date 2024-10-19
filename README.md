@@ -544,14 +544,117 @@ petalinux-package --wic --images-dir images/linux/ --bootfiles "ramdisk.cpio.gz.
 > >appendWindowsPath = false
 > >```
 
+Using flash etcher the \<DPU-TRD\>/output/`petalinux-sdimage.wic.gz` onto a SD Card.
+
+### Boot the KV260 with petalinux
+login with username petalinux and set a new password
+
+
 <br><br>
-## Start the Docker for Vitis AI
+## Creating an Accelerated applications
+1. Make a copy of top_wrapper.bin in a different directory and rename it to `kv260.bit.bin`
+
+\<DPU-TRD\>-`prj`-`Vivado`-`prj`-`KV260.runs`-`impl_1_01`-`top_wrapper.bin`
+
+2. Generating the Device Tree Overlay
 ```
 xsct
 ```
 > ```
 > createdts -hw <DPU-TRD>/prj/Vivado/prj/top_wrapper.xsa -zocl -platform-name KV260 -git-branch xlnx_rel_v2022.2 -overlay -compile -out <DPU-TRD>/output/dt
 > ```
+```
+dtc -@ -O dtb -o ./output/kv260.dtbo ./output/dt/KV260/psu_cortexa53_0/device_tree_domain/bsp/pl.dtsi
+```
+
+3. Create shell.json.
+```
+cd <output>
+echo '{ "shell_type" : "XRT_FLAT", "num_slots": "1" }' > shell.json
+```
+
+> 1. `kv260.bit.bin`
+> 2. `kv260.dtbo`
+> 3. `shell.json`
+<br>
+
+```
+mkdir myApp
+```
+Copy `kv260.bit.bin`, `kv260.dtbo`, `shell.json` to `myApp` directory
+```
+sudo su
+sudo mv myApp/ /lib/firmware/xilinx/
+sudo xmutil listapps
+```
+> | Accelerator        | Accel_type | Base            | Base_type | #slots(PL+AIE) | Active_slot |
+> |--------------------|------------|-----------------|-----------|----------------|-------------|
+> | k26-starter-kits   | XRT_FLAT   | k26-starter-kits| XRT_FLAT  | (0+0)          | 0           |
+> | myApp              | XRT_FLAT   | myApp           | XRT_FLAT  | (0+0)          | -1          |
+
+```
+sudo xmutil unloadapp
+sudo xmutil loadapp myApp
+sudo xmutil listapps
+```
+> | Accelerator        | Accel_type | Base            | Base_type | #slots(PL+AIE) | Active_slot |
+> |--------------------|------------|-----------------|-----------|----------------|-------------|
+> | k26-starter-kits   | XRT_FLAT   | k26-starter-kits| XRT_FLAT  | (0+0)          | -1          |
+> | myApp              | XRT_FLAT   | myApp           | XRT_FLAT  | (0+0)          | 0           |
+
+```
+sudo show_dpu
+```
+> device_core_id=0 device= 0 core = 0 fingerprint = 0x101000056010407 batch = 1 full_cu_name=unknown:dpu0
+
+```
+sudo xdputil query
+```
+>```
+>{
+>    "DPU IP Spec":{
+>        "DPU Core Count":1,
+>        "IP version":"v4.1.0",
+>        "enable softmax":"False"
+>    },
+>    "VAI Version":{
+>        "libvart-runner.so":"Xilinx vart-runner Version: 3.0.0-c5d2bd43d951c174185d728b8e5bcda3869e0b39  2024-10-19-09:47:04 ",
+>        "libvitis_ai_library-dpu_task.so":"Xilinx vitis_ai_library dpu_task Version: 3.0.0-c5d2bd43d951c174185d728b8e5bcda3869e0b39  2023-01-13 06:58:30 [UTC] ",
+>        "libxir.so":"Xilinx xir Version: xir-c5d2bd43d951c174185d728b8e5bcda3869e0b39 2024-10-19-09:36:50",
+>        "target_factory":"target-factory.3.0.0 c5d2bd43d951c174185d728b8e5bcda3869e0b39"
+>    },
+>    "kernels":[
+>        {
+>            "DPU Arch":"DPUCZDX8G_ISA1_B4096",
+>            "DPU Frequency (MHz)":275,
+>            "XRT Frequency (MHz)":100,
+>            "cu_idx":0,
+>            "fingerprint":"0x101000056010407",
+>            "is_vivado_flow":true,
+>            "name":"DPU Core 0"
+>        }
+>    ]
+>}
+>```
+
+
+<br><br>
+## Running the TRD Resnet50 Example
+```
+sudo su
+cd ~/app
+cp ./model/resnet50.xmodel .
+LD_LIBRARY_PATH=samples/lib ./samples/bin/resnet50 img/bellpeppe-994958.JPEG
+```
+>```
+>score[945]  =  0.992235     text: bell pepper,
+>score[941]  =  0.00315807   text: acorn squash,
+>score[943]  =  0.00191546   text: cucumber, cuke,
+>score[939]  =  0.000904801  text: zucchini, courgette,
+>score[949]  =  0.00054879   text: strawberry,
+>```
+
+
 
 <br><br><br>
 * * *
