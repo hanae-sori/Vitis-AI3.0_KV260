@@ -530,7 +530,7 @@ petalinux-config -c rootfs
 ```
 petalinux-build
 
-petalinux-package --wic --images-dir images/linux/ --bootfiles "ramdisk.cpio.gz.u-boot,boot.scr,Image,system.dtb,system-zynqmp-sck-kv-g-revB.dtb" --disk-name "sda" --wic-extra-args "-c gzip"
+petalinux-package --wic --images-dir images/linux/ --bootfiles "ramdisk.cpio.gz.u-boot,boot.scr,Image,system.dtb,system-zynqmp-sck-kv-g-revB.dtb" --disk-name "sda" --wic-extra-args "-c gzip" --outdir <DPU-TRD>/output/
 ```
 >**WSL2**
 >```
