@@ -424,11 +424,58 @@ vim scripts/base/trd_bd.tcl
 ```
 vivado -source scripts/trd_prj.tcl &
 ```
+<img src="./Image/Settings.PNG" alt="Vivado Project Settings" width="500"/>
+
+Open Project `PROJECT MANAGER`-`Settings`-`Project Settings`-`Bitstream`-`-bin_file*` setting generate bin file option
+
 ![Vivado DPU TRD](./Image/GUI.PNG)
 Click **Generate Bitstream** or  Type a Tcl command
 ```
 launch_runs impl_1_01 -to_step write_bitstream -jobs 4
 ```
+
+## PetaLinux(DPU-TRD) Flow
+```
+cd <DPU TRD>/prj/Vivado/dpu_petalinux_bsp
+```
+[xilinx-kv260-starterkit-v2022.2-10141622.bsp](https://www.xilinx.com/member/forms/download/xef.html?filename=xilinx-kv260-starterkit-v2022.2-10141622.bsp)
+```
+petalinux-create -t project -s xilinx-kv260-starterkit-v2022.2-10141622.bsp -n kv260
+cd kv260
+petalinux-config --get-hw-description=<DPU TRD>/prj/Vivado/prj/ --silentconfig
+```
+
+>**Copy the necessary recipes from zcu102 petalinux project**
+>```
+><DPU-TRD>/prj/Vivado/dpu_petalinux-bsp$ ./download_bsp.sh
+><DPU-TRD>/prj/Vivado/dpu_petalinux-bsp$ petalinux-create -t project -s xilinx-zcu102-trd.bsp
+>```
+>```
+>cd <kv260>
+>cp -r <DPU-TRD>/prj/Vivado/dpu_petalinux-bsp/xilinx_zcu102_bsp/project-spec/meta-user/recipes-kernel/ ./project-spec/meta-user/
+>cp -r <DPU-TRD>/prj/Vivado/dpu_petalinux-bsp/xilinx_zcu102_bsp/project-spec/meta-user/recipes-tools/ ./project-spec/meta-user/
+>cp -r <DPU-TRD>/prj/Vivado/dpu_petalinux-bsp/xilinx_zcu102_bsp/project-spec/meta-user/recipes-vitis-ai/ ./project-spec/meta-user/
+>cp -r <DPU-TRD>/prj/Vivado/dpu_petalinux-bsp/xilinx_zcu102_bsp/project-spec/meta-user/recipes-apps/ ./project-spec/meta-user/
+>```
+
+```
+vim project-spec/meta-user/conf/petalinuxbsp.conf
+```
+>`petalinuxbsp.conf`
+>```
+>IMAGE_INSTALL:append = " vitis-ai-library "
+>IMAGE_INSTALL:append = " vitis-ai-library-dev "
+>IMAGE_INSTALL:append = " resnet50 "
+>```
+```
+vim project-spec/meta-user/conf/user-rootfsconfig
+```
+>`user-rootfsconfig`
+>```
+>CONFIG_vitis-ai-library
+>CONFIG_vitis-ai-library-dev
+>CONFIG_vitis-ai-library-dbg
+>```
 
 ## Start the Docker for Vitis AI
 
