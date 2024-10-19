@@ -10,7 +10,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 <div align="center">
-  <img width="100%" height="100%" src="VAI_IDE.PNG">
+  <img width="100%" height="100%" src="/Image/VAI_IDE.PNG">
 </div>
 <br />
 
@@ -397,7 +397,38 @@ Zynq™ Ultrascale+™
 | First Release (DNNDK)    | 1.0                  | Vivado / Vitis / PetaLinux 2018.1 | 4.14                        |
 
 [DPUCZDX8G_VAI 3.5](https://github.com/user-attachments/files/16415791/VAI-3.5-ZUP-DPU-TRD-main.zip)
-
+```
+cp -R VAI-3.5-ZUP-DPU-TRD-main/hw/dpu_ip/DPUCZDX8G_v4_1_0  <DPU TRD>/dpu_ip/
+cd prj/Vivado
+vim scripts/trd_prj.tcl
+```
+>```
+>dict set dict_prj dict_sys prj_name                 {KV260}
+>dict set dict_prj dict_sys prj_part                 {xck26-sfvc784-2LV-c}
+>dict set dict_prj dict_sys prj_board                {KV260}
+>
+>dict set dict_prj dict_param DPU_CLK_MHz            {275}
+>dict set dict_prj dict_param DPU_NUM                {1}
+>dict set dict_prj dict_param DPU_ARCH               {512}  #It is for faster generation of the project. You can also do 4096(default).
+>dict set dict_prj dict_param DPU_SFM_NUM            {0}
+>dict set dict_prj dict_param DPU_URAM_PER_DPU       {50}
+>
+>dict set dict_prj dict_param  HP_CLK_MHz             {274}
+>```
+```
+vim scripts/base/trd_bd.tcl
+```
+>```
+>dict set dict_prj dict_sys ip_dir             [dict get $dict_prj dict_sys srcs_dir]/DPUCZDX8G_v4_1_0
+>```
+```
+vivado -source scripts/trd_prj.tcl &
+```
+![Vivado DPU TRD](./Image/GUI.PNG)
+Click **Generate Bitstream** or  Type a Tcl command
+```
+launch_runs impl_1_01 -to_step write_bitstream -jobs 4
+```
 
 ## Start the Docker for Vitis AI
 
