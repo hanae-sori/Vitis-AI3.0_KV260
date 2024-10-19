@@ -546,6 +546,12 @@ petalinux-package --wic --images-dir images/linux/ --bootfiles "ramdisk.cpio.gz.
 
 <br><br>
 ## Start the Docker for Vitis AI
+```
+xsct
+```
+> ```
+> createdts -hw <DPU-TRD>/prj/Vivado/prj/top_wrapper.xsa -zocl -platform-name KV260 -git-branch xlnx_rel_v2022.2 -overlay -compile -out <DPU-TRD>/output/dt
+> ```
 
 <br><br><br>
 * * *
