@@ -477,6 +477,49 @@ vim project-spec/meta-user/conf/user-rootfsconfig
 >CONFIG_vitis-ai-library-dbg
 >```
 
+> ### To replace old syntax with the new one download kv260/`update_override.sh`
+>```
+>cd <kv260>
+>chmod +x override.sh
+>./update_override.sh
+>```
+
+```
+petalinux-config
+```
+> FPGA Manager --><br>
+> <*> Fpga Manager<br>
+> <br>
+> <br>
+> Image Packaging Configuration --><br>
+> < > Copy final images to tftpboot<br>
+> <br>
+> <br>
+> Image Packaging Configuration --><br>
+> Root filesystem type (INITRD) --><br>
+> (X) INITRD<br>
+> <br>
+> Image Packaging Configuration --><br>
+> (petalinux-initramfs-image) INITRAMFS/INITRD Image name<br>
+> <br>
+> petalinux-initramfs-image
+```
+petalinux-config -c kernel
+```
+>Device Drivers --><br>
+>Misc devices --><br>
+><*> Xilinux Deep learning Processing Unit (DPU) Driver
+```
+petalinux-config -c rootfs
+```
+> user packages --><br>
+> <*> ### Select the required packages, Don't select vitis-ai-library-dbg
+> < > vitis-ai-library-dbg
+```
+petalinux-build
+```
+
+
 ## Start the Docker for Vitis AI
 
 
