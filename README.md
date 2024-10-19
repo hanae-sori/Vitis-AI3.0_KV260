@@ -12,7 +12,6 @@
 <div align="center">
   <img width="100%" height="100%" src="/Image/VAI_IDE.PNG">
 </div>
-<br />
 
 
 
@@ -21,7 +20,7 @@
 As the user must incorporate the IP into the Vivado IP catalog themselves, it is very important to understand that the designs and IP on this page are specific to Vitis AI v3.0 and were verified with Vivado and Vitis 2022.2.  If you are using a different version of Vitis or Vivado, please refer to [IP and Tool Version Compatibility](https://xilinx.github.io/Vitis-AI/3.0/html/docs/reference/version_compatibility.html) for additional information.
 
 
-
+<br><br>
 ## CUDA GPU Host Initial Preparation
 If you are leveraging a Vitis AI Docker Image with CUDA-capable GPU acceleration, you must install the NVIDIA Container Toolkit, which enables GPU support inside the Docker container.
 
@@ -73,7 +72,7 @@ A simple test to confirm driver installation is to execute `nvidia-smi`. This co
 >```
 
 
-
+<br><br>
 ## Docker Install and Verification
 Before you install Docker Engine for the first time on a new host machine, you need to set up the Docker repository. Afterward, you can install and update Docker from the repository.
 1. Set up Docker's `apt` repository.
@@ -136,7 +135,7 @@ docker --version
 >```
 
 
-
+<br><br>
 ## Install Vitis-AI
 The first step is to clone and follow the install steps for `Vitis AI 3.0`(**not 3.5**) on the host machine.
 ```
@@ -144,6 +143,9 @@ git clone --branch 3.0 https://github.com/Xilinx/Vitis-AI
 cd Vitis-AI
 ```
 [Vitis-AI github](https://github.com/Xilinx/Vitis-AI)
+
+
+<br><br>
 ## Build the Docker Container from Xilinx Recipes
 This script enables developers to build a container for a specific framework. This single unified script supports CPU-only hosts, GPU-capable hosts, and AMD ROCm-capable hosts.
 * The Docker daemon always runs as the `root` user. 
@@ -213,7 +215,7 @@ docker run --gpus all nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu20.04 nvidia-smi
 >```
 
 
-
+<br><br>
 ## Start the Docker for Vitis AI
 ```
 cd <Vitis-AI install path>/Vitis-AI
@@ -264,7 +266,7 @@ cd <Vitis-AI install path>/Vitis-AI
 >```
 
 
-
+<br><br>
 ## cross-compiler(PetaLinux) Install
 [PetaLinux 2024.1](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html)
 ```
@@ -370,7 +372,7 @@ vitis-ai-user@[HOST]:/workspace $ conda activate vitis-ai-pytorch
 > *** `resnet50_pt` ***
 
 
-
+<br><br>
 ## Vivado(DPU-TRD) Flow
 Clone and follow the install steps for Vitis AI 2.0 (to add a project for the TRD flow) on the host machine.
 ```
@@ -434,6 +436,8 @@ Click **Generate Bitstream** or  Type a Tcl command
 launch_runs impl_1_01 -to_step write_bitstream -jobs 4
 ```
 
+
+<br><br>
 ## PetaLinux(DPU-TRD) Flow
 ```
 cd <DPU TRD>/prj/Vivado/dpu_petalinux_bsp
@@ -528,11 +532,22 @@ petalinux-build
 
 petalinux-package --wic --images-dir images/linux/ --bootfiles "ramdisk.cpio.gz.u-boot,boot.scr,Image,system.dtb,system-zynqmp-sck-kv-g-revB.dtb" --disk-name "sda" --wic-extra-args "-c gzip"
 ```
+>**WSL2**
+>```
+>sudo vim /etc/wsl.conf
+>```
+> >```
+> >[boot]
+> >systemd=true
+> >
+> >[interop]
+> >appendWindowsPath = false
+> >```
 
-
+<br><br>
 ## Start the Docker for Vitis AI
 
-
+<br><br><br>
 * * *
 ## Reference
 
