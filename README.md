@@ -164,7 +164,6 @@ sudo ./docker_build.sh -t <DOCKER_TYPE> -f <FRAMEWORK>
 ||tf2|TensorFlow 2 with AI Optimizer CUDA-gpu|
 ||tf1|TensorFlow 1.15 CUDA-gpu|
 ||tf1|TensorFlow 1.15 with AI Optimizer CUDA-gpu|
-
 ||tf2|tf|
 ||||
 |rocm|pytorch|PyTorch ROCm-gpu|
@@ -266,8 +265,7 @@ cd <Vitis-AI install path>/Vitis-AI
 
 
 
-## Start the Docker for Vitis AI
-### cross-compiler(PetaLinux) Install
+## cross-compiler(PetaLinux) Install
 [PetaLinux 2024.1](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html)
 ```
 ./petalinux-v2024.1-05202009-installer.run
@@ -331,7 +329,7 @@ bison libselinux1 gnupg wget diffstat chrpath socat xterm autoconf libtool tar u
 vim ~/.bashrc
 ```
 >```
-> source /$ Xilinx path $/PetaLinux/tool/settings.sh
+> source <Xilinx install path>/PetaLinux/tool/settings.sh
 >```
 ```
 source ~/.bashrc
@@ -371,6 +369,37 @@ vitis-ai-user@[HOST]:/workspace $ conda activate vitis-ai-pytorch
 >```
 > *** `resnet50_pt` ***
 
+
+
+## Vivado(DPU-TRD) Flow
+Clone and follow the install steps for Vitis AI 2.0 (to add a project for the TRD flow) on the host machine.
+```
+git clone --branch 2.0 https://github.com/Xilinx/Vitis-AI
+cd Vitis-AI/dsa/DPU-TRD/
+```
+### IP and Tool Version Compatibility
+Zynq™ Ultrascale+™
+
+| Vitis AI Release Version | DPUCZDX8G IP Version | Software Tools Version | Linux Kernel Version Tested |
+|--------------------------|----------------------|------------------------|-----------------------------|
+| v3.5                     | 4.1 (not updated*)   | Vivado / Vitis / PetaLinux 2023.1 | 6.1                         |
+| v3.0                     | 4.1                  | Vivado / Vitis / PetaLinux 2022.2 | 5.15                        |
+| v2.5                     | 4.0                  | Vivado / Vitis / PetaLinux 2022.1 | 5.15                        |
+| v2.0                     | 3.4                  | Vivado / Vitis / PetaLinux 2021.2 | 5.10                        |
+| v1.4                     | 3.3                  | Vivado / Vitis / PetaLinux 2021.1 | 5.10                        |
+| v1.4                     | 3.3                  | Vivado / Vitis / PetaLinux 2021.1 | 5.10                        |
+| v1.3                     | 3.3                  | Vivado / Vitis / PetaLinux 2020.2 | 5.4                         |
+| v1.2                     | 3.2                  | Vivado / Vitis / PetaLinux 2020.1 | 5.4                         |
+| v1.1                     | 3.2                  | Vivado / Vitis / PetaLinux 2019.2 | 4.19                        |
+| v1.0                     | 3.1                  | Vivado / Vitis / PetaLinux 2019.1 | 4.19                        |
+| N/A (DNNDK)              | 3.0                  | Vivado / Vitis / PetaLinux 2019.1 | 4.19                        |
+| N/A (DNNDK)              | 2.0                  | Vivado / Vitis / PetaLinux 2018.2 | 4.14                        |
+| First Release (DNNDK)    | 1.0                  | Vivado / Vitis / PetaLinux 2018.1 | 4.14                        |
+
+[DPUCZDX8G_VAI 3.5](https://github.com/user-attachments/files/16415791/VAI-3.5-ZUP-DPU-TRD-main.zip)
+
+
+## Start the Docker for Vitis AI
 
 
 * * *
