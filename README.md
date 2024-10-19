@@ -668,5 +668,6 @@ LD_LIBRARY_PATH=samples/lib ./samples/bin/resnet50 img/bellpeppe-994958.JPEG
 
 [Vitis-AI Tutorials github](https://github.com/Xilinx/Vitis-AI-Tutorials/tree/3.0)
 
+[KV260 DPU-TRD Petalinux 2022.1 Vivado Flow](https://www.hackster.io/shreyasnr/kv260-dpu-trd-petalinux-2022-1-vivado-flow-000c0b?f=1)
 * * *
 * * *
