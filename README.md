@@ -175,7 +175,7 @@ sudo ./docker_build.sh -t <DOCKER_TYPE> -f <FRAMEWORK>
 
 
 ```
-docker run --gpus all nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu20.04 nvidia-smi
+sudo docker run --gpus all nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu20.04 nvidia-smi
 ```
 >```
 >==========
@@ -653,6 +653,16 @@ LD_LIBRARY_PATH=samples/lib ./samples/bin/resnet50 img/bellpeppe-994958.JPEG
 >score[939]  =  0.000904801  text: zucchini, courgette,
 >score[949]  =  0.00054879   text: strawberry,
 >```
+
+
+<br><br>
+## Start the Docker for Vitis AI
+```
+cd <Vitis-AI install path>/Vitis-AI/docker
+sudo ./docker_build.sh -t <DOCKER_TYPE> -f <FRAMEWORK>
+cd <Vitis-AI install path>/Vitis-AI
+sudo ./docker_run.sh xilinx/vitis-ai-<pytorch|opt-pytorch|tensorflow2|opt-tensorflow2|tensorflow>-<cpu|gpu|rocm>:latest
+```
 
 
 
