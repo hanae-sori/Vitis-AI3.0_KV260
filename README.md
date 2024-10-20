@@ -19,6 +19,25 @@
 
 As the user must incorporate the IP into the Vivado IP catalog themselves, it is very important to understand that the designs and IP on this page are specific to Vitis AI v3.0 and were verified with Vivado and Vitis 2022.2.  If you are using a different version of Vitis or Vivado, please refer to [IP and Tool Version Compatibility](https://xilinx.github.io/Vitis-AI/3.0/html/docs/reference/version_compatibility.html) for additional information.
 
+### IP and Tool Version Compatibility
+Zynq™ Ultrascale+™
+
+| Vitis AI Release Version | DPUCZDX8G IP Version | Software Tools Version | Linux Kernel Version Tested |
+|--------------------------|----------------------|------------------------|-----------------------------|
+| v3.5                     | 4.1 (not updated*)   | Vivado / Vitis / PetaLinux 2023.1 | 6.1                         |
+| v3.0                     | 4.1                  | Vivado / Vitis / PetaLinux 2022.2 | 5.15                        |
+| v2.5                     | 4.0                  | Vivado / Vitis / PetaLinux 2022.1 | 5.15                        |
+| v2.0                     | 3.4                  | Vivado / Vitis / PetaLinux 2021.2 | 5.10                        |
+| v1.4                     | 3.3                  | Vivado / Vitis / PetaLinux 2021.1 | 5.10                        |
+| v1.4                     | 3.3                  | Vivado / Vitis / PetaLinux 2021.1 | 5.10                        |
+| v1.3                     | 3.3                  | Vivado / Vitis / PetaLinux 2020.2 | 5.4                         |
+| v1.2                     | 3.2                  | Vivado / Vitis / PetaLinux 2020.1 | 5.4                         |
+| v1.1                     | 3.2                  | Vivado / Vitis / PetaLinux 2019.2 | 4.19                        |
+| v1.0                     | 3.1                  | Vivado / Vitis / PetaLinux 2019.1 | 4.19                        |
+| N/A (DNNDK)              | 3.0                  | Vivado / Vitis / PetaLinux 2019.1 | 4.19                        |
+| N/A (DNNDK)              | 2.0                  | Vivado / Vitis / PetaLinux 2018.2 | 4.14                        |
+| First Release (DNNDK)    | 1.0                  | Vivado / Vitis / PetaLinux 2018.1 | 4.14                        |
+
 
 <br><br>
 ## CUDA GPU Host Initial Preparation
@@ -219,7 +238,7 @@ sudo docker run --gpus all nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu20.04 nvidia-
 ## Start the Docker for Vitis AI
 ```
 cd <Vitis-AI install path>/Vitis-AI
-./docker_run.sh xilinx/vitis-ai-<pytorch|opt-pytorch|tensorflow2|opt-tensorflow2|tensorflow>-<cpu|gpu|rocm>:latest
+sudo ./docker_run.sh xilinx/vitis-ai-<pytorch|opt-pytorch|tensorflow2|opt-tensorflow2|tensorflow>-<cpu|gpu|rocm>:latest
 ```
 >```
 >==========
@@ -268,15 +287,16 @@ cd <Vitis-AI install path>/Vitis-AI
 
 <br><br>
 ## cross-compiler(PetaLinux) Install
-[PetaLinux 2024.1](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools.html)
+
+[PetaLinux 2022.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/archive.html)
 ```
-./petalinux-v2024.1-05202009-installer.run
+./petalinux-v2022.2-10141622-installer.run
 ```
 
 * * *
 There is a bit of an issue. System tools are required.
 >```
->PetaLinux CMD tools installer version 2024.1
+>PetaLinux CMD tools installer version 2022.2
 >============================================
 >[INFO] Checking free disk space
 >[INFO] Checking installed tools
@@ -303,7 +323,7 @@ bison libselinux1 gnupg wget diffstat chrpath socat xterm autoconf libtool tar u
 * * *
 
 >```
->PetaLinux CMD tools installer version 2024.1
+>PetaLinux CMD tools installer version 2022.2
 >============================================
 >[INFO] Checking free disk space
 >[INFO] Checking installed tools
@@ -324,14 +344,14 @@ bison libselinux1 gnupg wget diffstat chrpath socat xterm autoconf libtool tar u
 >Press Enter to display the license agreements
 >Do you accept Xilinx End User License Agreement? [y/N] > y
 >Do you accept Third Party End User License Agreement? [y/N] > y
->Enter target directory for SDK (default: /$ user path $/tools): /$ Xilinx path = /tools/Xilinx/ $/PetaLinux
+>Enter target directory for SDK (default: <user path>/tools): <Xilinx install path>/PetaLinux
 >
 >```
 ```
 vim ~/.bashrc
 ```
 >```
-> source <Xilinx install path>/PetaLinux/tool/settings.sh
+> source <Xilinx install path>/PetaLinux/<Petalinux version>/tool/settings.sh
 >```
 ```
 source ~/.bashrc
@@ -379,24 +399,6 @@ Clone and follow the install steps for Vitis AI 2.0 (to add a project for the TR
 git clone --branch 2.0 https://github.com/Xilinx/Vitis-AI
 cd Vitis-AI/dsa/DPU-TRD/
 ```
-### IP and Tool Version Compatibility
-Zynq™ Ultrascale+™
-
-| Vitis AI Release Version | DPUCZDX8G IP Version | Software Tools Version | Linux Kernel Version Tested |
-|--------------------------|----------------------|------------------------|-----------------------------|
-| v3.5                     | 4.1 (not updated*)   | Vivado / Vitis / PetaLinux 2023.1 | 6.1                         |
-| v3.0                     | 4.1                  | Vivado / Vitis / PetaLinux 2022.2 | 5.15                        |
-| v2.5                     | 4.0                  | Vivado / Vitis / PetaLinux 2022.1 | 5.15                        |
-| v2.0                     | 3.4                  | Vivado / Vitis / PetaLinux 2021.2 | 5.10                        |
-| v1.4                     | 3.3                  | Vivado / Vitis / PetaLinux 2021.1 | 5.10                        |
-| v1.4                     | 3.3                  | Vivado / Vitis / PetaLinux 2021.1 | 5.10                        |
-| v1.3                     | 3.3                  | Vivado / Vitis / PetaLinux 2020.2 | 5.4                         |
-| v1.2                     | 3.2                  | Vivado / Vitis / PetaLinux 2020.1 | 5.4                         |
-| v1.1                     | 3.2                  | Vivado / Vitis / PetaLinux 2019.2 | 4.19                        |
-| v1.0                     | 3.1                  | Vivado / Vitis / PetaLinux 2019.1 | 4.19                        |
-| N/A (DNNDK)              | 3.0                  | Vivado / Vitis / PetaLinux 2019.1 | 4.19                        |
-| N/A (DNNDK)              | 2.0                  | Vivado / Vitis / PetaLinux 2018.2 | 4.14                        |
-| First Release (DNNDK)    | 1.0                  | Vivado / Vitis / PetaLinux 2018.1 | 4.14                        |
 
 [DPUCZDX8G_VAI 3.5](https://github.com/user-attachments/files/16415791/VAI-3.5-ZUP-DPU-TRD-main.zip)
 ```
