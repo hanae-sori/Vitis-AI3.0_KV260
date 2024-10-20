@@ -658,12 +658,12 @@ LD_LIBRARY_PATH=samples/lib ./samples/bin/resnet50 img/bellpeppe-994958.JPEG
 
 
 <br><br>
-## Start the Docker for Vitis AI
+## Quantizing the Model PyTorch Version (vai_q_pytorch)
 ```
 cd <Vitis-AI install path>/Vitis-AI/docker
-sudo ./docker_build.sh -t <DOCKER_TYPE> -f <FRAMEWORK>
+sudo ./docker_build.sh -t gpu -f opt_pytorch
 cd <Vitis-AI install path>/Vitis-AI
-sudo ./docker_run.sh xilinx/vitis-ai-<pytorch|opt-pytorch|tensorflow2|opt-tensorflow2|tensorflow>-<cpu|gpu|rocm>:latest
+sudo ./docker_run.sh xilinx/vitis-ai-opt-pytorch-gpu:latest
 ```
 
 
