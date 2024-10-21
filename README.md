@@ -659,12 +659,57 @@ LD_LIBRARY_PATH=samples/lib ./samples/bin/resnet50 img/bellpeppe-994958.JPEG
 
 <br><br>
 ## Quantizing the Model PyTorch Version (vai_q_pytorch)
+** [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/) **
 ```
 cd <Vitis-AI install path>/Vitis-AI/docker
-sudo ./docker_build.sh -t gpu -f opt_pytorch
+./docker_build.sh -t gpu -f opt_pytorch
 cd <Vitis-AI install path>/Vitis-AI
-sudo ./docker_run.sh xilinx/vitis-ai-opt-pytorch-gpu:latest
+./docker_run.sh xilinx/vitis-ai-opt-pytorch-gpu:latest
+
+conda activate vitis-ai-optimizer_pytorch
+## A new Conda environment with a specified PyTorch version (1.2~1.12)  can be created
+# cd /workspace/docker/common
+# replace_pytorch.sh new_conda_env_name
+
+cd /workspace/src/vai_quantizer/vai_q_pytorch
+export CUDA_HOME=/usr/local/cuda
+## For the CPU version, remove all CUDA_HOME environment variable setting in your .bashrc
+# unset CUDA_HOME
 ```
+>```
+> vim requirements.txt
+>```
+> > scikit-learn
+> > scipy==1.3.1
+> > numpy==1.17.2
+> > tqdm
+> > ninja
+> > six
+> > tabulate==0.8.9 
+> > graphviz==0.19.1
+> > PyYAML==6.0
+> > networkx==2.5.1
+```
+find /usr -name "libffi.so*"
+
+sudo ln -s /usr/lib/x86_64-linux-gnu/libffi.so.<version> /usr/lib/x86_64-linux-gnu/libffi.so.6
+pip install sklearn --use-deprecated=legacy-resolver
+pip install -r requirements.txt
+cd ./pytorch_binding
+python setup.py install
+```
+> > `[host]` **Not Docker Container**
+> > ```
+> > docker run --gpus all nvidia/cuda:<cuda version>-cudnn<cudnn version>-runtime-ubuntu<ubuntu version>
+> > ```
+```
+sudo apt install nvidia-cuda-toolkit
+```
+Verify the installation.
+```
+python -c "import pytorch_nndct"
+```
+
 
 
 
