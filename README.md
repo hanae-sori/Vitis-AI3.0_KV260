@@ -702,6 +702,7 @@ Access `http://localhost:8888/?token=` using a web browser.
 
 
 
+
 <br><br>
 ## Quantizing the Model PyTorch Version (vai_q_pytorch)
 ** [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/) **
