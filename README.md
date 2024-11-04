@@ -258,14 +258,14 @@ cd <Vitis-AI install path>/Vitis-AI/docker
 ## Start the Docker for Vitis AI
 ```
 cd <Vitis-AI install path>/Vitis-AI
-sudo ./docker_run.sh xilinx/vitis-ai-<pytorch|opt-pytorch|tensorflow2|opt-tensorflow2|tensorflow>-<cpu|gpu|rocm>:latest
+./docker_run.sh xilinx/vitis-ai-<pytorch|opt-pytorch|tensorflow2|opt-tensorflow2|tensorflow>-<cpu|gpu|rocm>:latest
 ```
 >```
 >==========
 >== CUDA ==
 >==========
 >
->CUDA Version 11.3.1
+>CUDA Version 11.8.0
 >
 >Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 >
@@ -275,16 +275,9 @@ sudo ./docker_run.sh xilinx/vitis-ai-<pytorch|opt-pytorch|tensorflow2|opt-tensor
 >
 >A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
 >
->Setting up root 's environment in the Docker container...
-> WARNING: You are running Vitis AI Docker container as root.
->For security reasons, consider running as a regular user:
->    $ sh docker_run.sh
->
->OR
->
->    $ docker run -e UID=$(id -u) -e GID=$(id -g) args...
->
->You will be running as vitis-ai-user with non-root UID/GID in Vitis AI Docker container.
+>Setting up hanaesori 's environment in the Docker container...
+>usermod: no changes
+>Running as vitis-ai-user with ID 0 and group 0
 >
 >
 >==========================================
@@ -298,17 +291,59 @@ sudo ./docker_run.sh xilinx/vitis-ai-<pytorch|opt-pytorch|tensorflow2|opt-tensor
 >
 >==========================================
 >
->Docker Image Version: 3.0.0.001   (GPU)
->Vitis AI Git Hash: 091f75041
->Build Date: 2024-10-14
+>Docker Image Version: 3.5.0.001-1eed93cde   (GPU)
+>Vitis AI Git Hash: 1eed93cde
+>Build Date: 2024-11-04
 >WorkFlow: pytorch
+>
+>vitis-ai-user@99adb10b6507:/workspace$ 
 >```
 
 
 
 <br><br>
 ## Save and Load the Vitis AI Docker image
+1. Check the Docker images & container list
+```
+docker image list
+```
+>```
+>REPOSITORY                         TAG                              IMAGE ID       CREATED         SIZE
+>xilinx/vitis-ai-pytorch-gpu        3.5.0.001-1eed93cde              861f2c39dddb   5 hours ago     32.9GB
+>xilinx/vitis-ai-gpu-pytorch-base   latest                           f4e73858e7be   6 hours ago     12.2GB
+>nvidia/cuda                        12.6.2-cudnn-devel-ubuntu20.04   59abcd54f6af   3 weeks ago     8.11GB
+>hello-world                        latest                           d2c94e258dcb   18 months ago   13.3kB
+>```
+<br>
 
+```
+docker ps -a
+```
+>```
+>CONTAINER ID   IMAGE                                             COMMAND                  CREATED          STATUS                      PORTS     NAMES
+>8fa95727aadd   xilinx/vitis-ai-pytorch-gpu:3.5.0.001-1eed93cde   "/opt/nvidia/nvidia_…"   2 hours ago      Up 2 hours                            competent_dijkstra
+>81ebf59e16a7   nvidia/cuda:12.6.2-cudnn-devel-ubuntu20.04        "/opt/nvidia/nvidia_…"   18 minutes ago   Exited (0) 18 minutes ago             dreamy_antonelli
+>8689cc2d2c3d   hello-world                                       "/hello"                 2 weeks ago      Exited (0) 2 weeks ago                friendly_pike
+>```
+<br>
+   
+2. Load the Vitis AI Docker image & new container
+```
+docker run --gpus all --name vitis-ai_3.5 -v <Vitis-AI install path>/Vitis-AI:/workspace -p 8888:8888 -it xilinx/vitis-ai-pytorch-gpu /bin/bash
+```
+<br>
+
+3. run container
+```
+docker start vitis-ai_3.5 && docker exec -it vitis-ai_3.5 /bin/bash
+```
+```
+docker ps -a
+```
+>```
+>CONTAINER ID   IMAGE                                        COMMAND                  CREATED             STATUS                  PORTS                                              NAMES
+>ca695755579a   vitis-ai                                     "/opt/nvidia/nvidia_…"   About an hour ago   Up 11 seconds           0.0.0.0:8888->8888/tcp, :::8888->8888/tcp          vitis_ai_3.5
+>```
 
 
 
