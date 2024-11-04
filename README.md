@@ -1,4 +1,4 @@
-# Vitis-AI 3.0_kv260
+# Vitis-AI 3.5_kv260
 <table class="sphinxhide">
  <tr>
    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Vitis AI</h1><h0>Adaptable & Real-Time AI Inference Acceleration</h0>
@@ -17,7 +17,7 @@
 
 ## Version and Compatibility
 
-As the user must incorporate the IP into the Vivado IP catalog themselves, it is very important to understand that the designs and IP on this page are specific to Vitis AI v3.0 and were verified with Vivado and Vitis 2022.2.  If you are using a different version of Vitis or Vivado, please refer to [IP and Tool Version Compatibility](https://xilinx.github.io/Vitis-AI/3.0/html/docs/reference/version_compatibility.html) for additional information.
+As the user must incorporate the IP into the Vivado IP catalog themselves, it is very important to understand that the designs and IP on this page are specific to Vitis AI v3.5 and were verified with Vivado and Vitis 2022.2.  If you are using a different version of Vitis or Vivado, please refer to [IP and Tool Version Compatibility](https://xilinx.github.io/Vitis-AI/3.0/html/docs/reference/version_compatibility.html) for additional information.
 
 ### IP and Tool Version Compatibility
 Zynq™ Ultrascale+™
@@ -115,8 +115,9 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 3. Verify that the Docker Engine installation is successful by running the `hello-world` image.
+** [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/) **
 ```
-sudo docker run hello-world
+docker run hello-world
 ```
 >```
 >Unable to find image 'hello-world:latest' locally
@@ -705,7 +706,6 @@ Access `http://localhost:8888/?token=` using a web browser.
 
 <br><br>
 ## Quantizing the Model PyTorch Version (vai_q_pytorch)
-** [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/) **
 ```
 cd <Vitis-AI install path>/Vitis-AI/docker
 ./docker_build.sh -t gpu -f opt_pytorch
