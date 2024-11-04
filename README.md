@@ -342,7 +342,7 @@ docker ps -a
 ```
 >```
 >CONTAINER ID   IMAGE                                        COMMAND                  CREATED             STATUS                  PORTS                                              NAMES
->ca695755579a   vitis-ai                                     "/opt/nvidia/nvidia_…"   About an hour ago   Up 11 seconds           0.0.0.0:8888->8888/tcp, :::8888->8888/tcp          vitis_ai_3.5
+>ca695755579a   vitis-ai_3.5                                 "/opt/nvidia/nvidia_…"   About an hour ago   Up 11 seconds           0.0.0.0:8888->8888/tcp, :::8888->8888/tcp          vitis_ai_3.5
 >```
 
 
