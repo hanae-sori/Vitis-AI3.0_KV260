@@ -171,7 +171,7 @@ docker --version
 >```
 >Docker version 27.3.1, build ce12230
 >```
-><br>
+<br>
 
 4. Test that Docker has been enabled with CUDA-capable GPU support.
 ```
@@ -182,7 +182,7 @@ docker run --gpus all nvidia/cuda:<cuda version>-cudnn<cudnn version>-runtime-ub
 >== CUDA ==
 >==========
 >
->CUDA Version 11.6.1
+>CUDA Version 12.6.2
 >
 >Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 >
