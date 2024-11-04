@@ -112,10 +112,12 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 ```
+
 2. Install the Docker packages.
 ```
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
+
 3. Verify that the Docker Engine installation is successful by running the `hello-world` image.
 
 ** [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/) **
@@ -157,55 +159,22 @@ docker --version
 >Docker version 27.3.1, build ce12230
 >```
 
-
-<br><br>
-## Install Vitis-AI
-The first step is to clone and follow the install steps for `Vitis AI 3.0`(**not 3.5**) on the host machine.
+4. Test that Docker has been enabled with CUDA-capable GPU support.
 ```
-git clone --branch 3.0 https://github.com/Xilinx/Vitis-AI
-cd Vitis-AI
+nvcc --version
 ```
-[Vitis-AI github](https://github.com/Xilinx/Vitis-AI)
-
-
-<br><br>
-## Build the Docker Container from Xilinx Recipes
-This script enables developers to build a container for a specific framework. This single unified script supports CPU-only hosts, GPU-capable hosts, and AMD ROCm-capable hosts.
-* The Docker daemon always runs as the `root` user. 
+>```
+>
+>```
 ```
-cd <Vitis-AI install path>/Vitis-AI/docker
-sudo ./docker_build.sh -t <DOCKER_TYPE> -f <FRAMEWORK>
-```
-#### Vitis AI Docker Container Build Options
-|DOCKER_TYPE (-t)|TARGET_FRAMEWORK (-f)|Desired Environment|
-|------|---|---|
-|cpu|pytorch|PyTorch cpu-only|
-||tf2|TensorFlow 2 cpu-only|
-||tf1|TensorFlow 1.15 cpu-only|
-||||
-|gpu|pytorch|PyTorch CUDA-gpu|
-||opt_pytorch|PyTorch with AI Optimizer CUDA-gpu|
-||tf2|TensorFlow 2 CUDA-gpu|
-||tf2|TensorFlow 2 with AI Optimizer CUDA-gpu|
-||tf1|TensorFlow 1.15 CUDA-gpu|
-||tf1|TensorFlow 1.15 with AI Optimizer CUDA-gpu|
-||tf2|tf|
-||||
-|rocm|pytorch|PyTorch ROCm-gpu|
-||opt_pytorch|PyTorch with AI Optimizer ROCm-gpu|
-||tf2|TensorFlow 2 ROCm-gpu|
-||opt_tf2|TensorFlow 2 with AI Optimizer ROCm-gpu|
-
-
-```
-sudo docker run --gpus all nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu20.04 nvidia-smi
+sudo docker run --gpus all nvidia/cuda:11.6.1-cudnn8-runtime-ubuntu20.04 nvidia-smi
 ```
 >```
 >==========
 >== CUDA ==
 >==========
 >
->CUDA Version 11.3.1
+>CUDA Version 11.6.1
 >
 >Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 >
@@ -236,6 +205,45 @@ sudo docker run --gpus all nvidia/cuda:11.3.1-cudnn8-runtime-ubuntu20.04 nvidia-
 >|    0   N/A  N/A       559      G   /Xwayland                                   N/A      |
 >+-----------------------------------------------------------------------------------------+
 >```
+
+
+<br><br>
+## Install Vitis-AI
+The first step is to clone and follow the install steps for `Vitis AI 3.5` on the host machine.
+```
+git clone https://github.com/Xilinx/Vitis-AI # when version update, --branch 3.5
+cd Vitis-AI
+```
+[Vitis-AI github](https://github.com/Xilinx/Vitis-AI)
+
+
+<br><br>
+## Build the Docker Container from Xilinx Recipes
+This script enables developers to build a container for a specific framework. This single unified script supports CPU-only hosts, GPU-capable hosts, and AMD ROCm-capable hosts.
+```
+cd <Vitis-AI install path>/Vitis-AI/docker
+./docker_build.sh -t <DOCKER_TYPE> -f <FRAMEWORK>
+```
+#### Vitis AI Docker Container Build Options
+|DOCKER_TYPE (-t)|TARGET_FRAMEWORK (-f)|Desired Environment|
+|------|---|---|
+|cpu|pytorch|PyTorch cpu-only|
+||tf2|TensorFlow 2 cpu-only|
+||tf1|TensorFlow 1.15 cpu-only|
+||||
+|gpu|pytorch|PyTorch CUDA-gpu|
+||opt_pytorch|PyTorch with AI Optimizer CUDA-gpu|
+||tf2|TensorFlow 2 CUDA-gpu|
+||tf2|TensorFlow 2 with AI Optimizer CUDA-gpu|
+||tf1|TensorFlow 1.15 CUDA-gpu|
+||tf1|TensorFlow 1.15 with AI Optimizer CUDA-gpu|
+||tf2|tf|
+||||
+|rocm|pytorch|PyTorch ROCm-gpu|
+||opt_pytorch|PyTorch with AI Optimizer ROCm-gpu|
+||tf2|TensorFlow 2 ROCm-gpu|
+||opt_tf2|TensorFlow 2 with AI Optimizer ROCm-gpu|
+
 
 
 <br><br>
