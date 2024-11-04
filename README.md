@@ -105,6 +105,8 @@ A simple test to confirm CUDA Version `nvcc --version`.
 <br><br>
 ## Docker Install and Verification
 Before you install Docker Engine for the first time on a new host machine, you need to set up the Docker repository. Afterward, you can install and update Docker from the repository.
+<br>
+
 1. Set up Docker's `apt` repository.
 ```
 # Add Docker's official GPG key:
@@ -121,11 +123,13 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 ```
+<br>
 
 2. Install the Docker packages.
 ```
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
+<br>
 
 3. Verify that the Docker Engine installation is successful by running the `hello-world` image.
 
@@ -167,6 +171,7 @@ docker --version
 >```
 >Docker version 27.3.1, build ce12230
 >```
+><br>
 
 4. Test that Docker has been enabled with CUDA-capable GPU support.
 ```
