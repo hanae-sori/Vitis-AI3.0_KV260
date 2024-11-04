@@ -19,6 +19,8 @@
 
 As the user must incorporate the IP into the Vivado IP catalog themselves, it is very important to understand that the designs and IP on this page are specific to Vitis AI v3.5 and were verified with Vivado and Vitis 2022.2.  If you are using a different version of Vitis or Vivado, please refer to [IP and Tool Version Compatibility](https://xilinx.github.io/Vitis-AI/3.0/html/docs/reference/version_compatibility.html) for additional information.
 
+"Vitis AI v3.0 is not compatible with Python >= 3.8."
+
 ### IP and Tool Version Compatibility
 Zynq™ Ultrascale+™
 
@@ -115,6 +117,7 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 3. Verify that the Docker Engine installation is successful by running the `hello-world` image.
+
 ** [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/) **
 ```
 docker run hello-world
