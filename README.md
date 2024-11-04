@@ -92,6 +92,15 @@ A simple test to confirm driver installation is to execute `nvidia-smi`. This co
 >+---------------------------------------------------------------------------------------+
 >```
 
+A simple test to confirm CUDA Version `nvcc --version`.
+>```
+>nvcc: NVIDIA (R) Cuda compiler driver
+>Copyright (c) 2005-2024 NVIDIA Corporation
+>Built on Thu_Sep_12_02:18:05_PDT_2024
+>Cuda compilation tools, release 12.6, V12.6.77
+>Build cuda_12.6.r12.6/compiler.34841621_0
+>```
+
 
 <br><br>
 ## Docker Install and Verification
@@ -161,13 +170,7 @@ docker --version
 
 4. Test that Docker has been enabled with CUDA-capable GPU support.
 ```
-nvcc --version
-```
->```
->
->```
-```
-sudo docker run --gpus all nvidia/cuda:11.6.1-cudnn8-runtime-ubuntu20.04 nvidia-smi
+docker run --gpus all nvidia/cuda:<cuda version>-cudnn<cudnn version>-runtime-ubuntu<ubuntu version> nvidia-smi
 ```
 >```
 >==========
@@ -295,6 +298,13 @@ sudo ./docker_run.sh xilinx/vitis-ai-<pytorch|opt-pytorch|tensorflow2|opt-tensor
 >Build Date: 2024-10-14
 >WorkFlow: pytorch
 >```
+
+
+
+<br><br>
+## Save and Load the Vitis AI Docker image
+
+
 
 
 <br><br>
@@ -652,6 +662,7 @@ sudo xdputil query
 >```
 
 
+
 <br><br>
 ## Running the TRD Resnet50 Example
 ```
@@ -667,51 +678,6 @@ LD_LIBRARY_PATH=samples/lib ./samples/bin/resnet50 img/bellpeppe-994958.JPEG
 >score[939]  =  0.000904801  text: zucchini, courgette,
 >score[949]  =  0.00054879   text: strawberry,
 >```
-
-<br><br>
-## Inspection the Model PyTorch Version
-```
-./docker_run.sh xilinx/vitis-ai-pytorch-gpu:latest
-conda activate vitis-ai-pytorch
-jupyter-notebook &
-```
-<br>
-
-> ```
->Traceback (most recent call last):
->  File "/opt/vitis_ai/conda/envs/vitis-ai-pytorch/bin/jupyter-notebook", line 6, in <module>
->    from notebook.notebookapp import main
->  File "/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.7/site-packages/notebook/notebookapp.py", line 80, in <module>
->    from .services.contents.manager import ContentsManager
->  File "/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.7/site-packages/notebook/services/contents/manager.py", line 17, in <module>
->    from nbformat import sign, validate as validate_nb, ValidationError
->  File "/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.7/site-packages/nbformat/__init__.py", line 11, in <module>
->    from . import v1, v2, v3, v4
->  File "/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.7/site-packages/nbformat/v4/__init__.py", line 23, in <module>
->    from .convert import downgrade, upgrade
->  File "/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.7/site-packages/nbformat/v4/convert.py", line 11, in <module>
->    from nbformat import v3, validator
->  File "/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.7/site-packages/nbformat/validator.py", line 16, in <module>
->    from .json_compat import ValidationError, _validator_for_name, get_current_validator
->  File "/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.7/site-packages/nbformat/json_compat.py", line 11, in <module>
->    import jsonschema
->  File "/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.7/site-packages/jsonschema/__init__.py", line 13, in <module>
->    from jsonschema._format import FormatChecker
->  File "/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.7/site-packages/jsonschema/_format.py", line 411, in <module>
->    from webcolors import CSS21_NAMES_TO_HEX
->  File "/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.7/site-packages/webcolors/__init__.py", line 12, in <module>
->    from ._conversion import (
->  File "/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.7/site-packages/webcolors/_conversion.py", line 49
->    if hex_value := color_map.get(name.lower()):
->                  ^
->SyntaxError: invalid syntax
-> ```
-```
-pip uninstall webcolors -y
-pip install webcolors==1.13 -y # Version(conda install version 24.8.0) larger than 1.13 require Python 3.8 or later
-```
-Access `http://localhost:8888/?token=` using a web browser.
-
 
 
 
