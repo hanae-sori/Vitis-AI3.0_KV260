@@ -779,7 +779,11 @@ python -c "import pytorch_nndct"
 > The ReLU Type option determines the specific ReLU activation functions that can be used with the DPUCZDX8G. ReLU and ReLU6 are supported by default. Selection of the option “ReLU + LeakyReLU + ReLU6“ will enable LeakyReLU as an activation function.
 > 
 >  ** Note: For this implementation, the LeakyReLU coefficient is fixed to 0.1 which is approximated as 26/256 = 0.1015625
-
+```
+node name                                                                       op Type           hardware constraints
+------------------------------------------------------------------------------  ----------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ToyModel::ToyModel/LeakyReLU[relu]/ret.7                                        nndct_leaky_relu  xir::Op{name = ToyModel__ToyModel_Conv2d_conv__ret_5, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.100000, but DPU only support 0.1015625.].```
+```
 
 
 
