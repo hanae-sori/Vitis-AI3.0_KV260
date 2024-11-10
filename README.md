@@ -1,4 +1,4 @@
-# Vitis-AI 3.5_kv260
+![inspect_yolov5n](https://github.com/user-attachments/assets/c0b615af-ec7a-49da-8547-d81ce50b923c)# Vitis-AI 3.5_kv260
 <table class="sphinxhide">
  <tr>
    <td align="center"><img src="https://raw.githubusercontent.com/Xilinx/Image-Collateral/main/xilinx-logo.png" width="30%"/><h1>Vitis AI</h1><h0>Adaptable & Real-Time AI Inference Acceleration</h0>
@@ -726,10 +726,12 @@ LD_LIBRARY_PATH=samples/lib ./samples/bin/resnet50 img/bellpeppe-994958.JPEG
 Proceed with the example in inspector_quantizer.ipynb in Jupyter Notebook.
 
 1. Inspect the model using the inspector.
-2. Remove the layers on CPU.
+   ![inspect_yolov5n](./Image/inspect_yolov5n.png)
+3. Remove the layers on CPU.
 * For YOLOv5, replace the environmental files in the YOLO directory with `.py.DPU` files and configure with `-LeakyReLU.yaml` to generate the model.
 * Remove any Detect layers operating on the CPU so they run as CPU code. Replace `SiLU` with `LeakyReLU(26/256)` ≃ 1, and adjust `nc` according to the dataset.
 3. Verify full DPU operation with inspection.
+   ![compiler](./Image/inspect_DPUCZDX8G_ISA1_B4096.png)
 4. Run calibration with the quantizer.
 5. Exporting quant config `.json`.
 6. Perform testing with the quantizer.
@@ -743,6 +745,7 @@ For PyTorch, the quantizer NNDCT outputs the quantized model in the XIR format d
 ```
 vai_c_xir -x /PATH/TO/quantized.xmodel -a /PATH/TO/arch.json -o /OUTPUTPATH -n netname
 ```
+![compiler](./Image/compiler.PNG)
 
 
 
