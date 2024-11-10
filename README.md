@@ -736,7 +736,10 @@ Proceed with the example in inspector_quantizer.ipynb in Jupyter Notebook.
 5. Exporting quant config `.json`.
 6. Perform testing with the quantizer.
 7. Conver module to `.xmodel`.
-
+  
+<br>
+** Verify `.xmodel` with [netron.app](https://netron.app/). **
+![DetectMultiBackend_int.xmodel](./Image/DetectMultiBackend_int.xmodel.png)
 
 
 <br><br>
