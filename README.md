@@ -722,67 +722,26 @@ LD_LIBRARY_PATH=samples/lib ./samples/bin/resnet50 img/bellpeppe-994958.JPEG
 
 
 <br><br>
-## Quantizing the Model PyTorch Version (vai_q_pytorch)
-```
-cd <Vitis-AI install path>/Vitis-AI/docker
-./docker_build.sh -t gpu -f opt_pytorch
-cd <Vitis-AI install path>/Vitis-AI
-./docker_run.sh xilinx/vitis-ai-opt-pytorch-gpu:latest
+## Quantizing the Model PyTorch Version (from pytorch_nndct)
+Proceed with the example in inspector_quantizer.ipynb in Jupyter Notebook.
 
-conda activate vitis-ai-optimizer_pytorch
-## A new Conda environment with a specified PyTorch version (1.2~1.12)  can be created
-# cd /workspace/docker/common
-# replace_pytorch.sh new_conda_env_name
-
-cd /workspace/src/vai_quantizer/vai_q_pytorch
-export CUDA_HOME=/usr/local/cuda
-## For the CPU version, remove all CUDA_HOME environment variable setting in your .bashrc
-# unset CUDA_HOME
-```
->```
-> vim requirements.txt
->```
-> > scikit-learn
-> > scipy==1.3.1
-> > numpy==1.17.2
-> > tqdm
-> > ninja
-> > six
-> > tabulate==0.8.9 
-> > graphviz==0.19.1
-> > PyYAML==6.0
-> > networkx==2.5.1
-```
-find /usr -name "libffi.so*"
-
-sudo ln -s /usr/lib/x86_64-linux-gnu/libffi.so.<version> /usr/lib/x86_64-linux-gnu/libffi.so.6
-pip install sklearn --use-deprecated=legacy-resolver
-pip install -r requirements.txt
-cd ./pytorch_binding
-python setup.py install
-```
-> > `[host]` **Not Docker Container**
-> > ```
-> > docker run --gpus all nvidia/cuda:<cuda version>-cudnn<cudnn version>-runtime-ubuntu<ubuntu version>
-> > ```
-```
-sudo apt install nvidia-cuda-toolkit
-```
-Verify the installation.
-```
-python -c "import pytorch_nndct"
-```
+1. Inspect the model using the inspector.
+2. Remove the layers on CPU.
+* For YOLOv5, replace the environmental files in the YOLO directory with `.py.DPU` files and configure with `-LeakyReLU.yaml` to generate the model.
+* Remove any Detect layers operating on the CPU so they run as CPU code. Replace `SiLU` with `LeakyReLU(26/256)` ≃ 1, and adjust `nc` according to the dataset.
+3. Verify full DPU operation with inspection.
+4. Run calibration with the quantizer.
+5. Exporting quant config `.json`.
+6. Perform testing with the quantizer.
+7. Conver module to `.xmodel`.
 
 
-> ### ReLU Type
-> 
-> The ReLU Type option determines the specific ReLU activation functions that can be used with the DPUCZDX8G. ReLU and ReLU6 are supported by default. Selection of the option “ReLU + LeakyReLU + ReLU6“ will enable LeakyReLU as an activation function.
-> 
->  ** Note: For this implementation, the LeakyReLU coefficient is fixed to 0.1 which is approximated as 26/256 = 0.1015625
+
+<br><br>
+## Compile the Model PyTorch Version (vai_c_xir)
+For PyTorch, the quantizer NNDCT outputs the quantized model in the XIR format directly. Use vai_c_xir to compile it.
 ```
-node name                                                                       op Type           hardware constraints
-------------------------------------------------------------------------------  ----------------  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-ToyModel::ToyModel/LeakyReLU[relu]/ret.7                                        nndct_leaky_relu  xir::Op{name = ToyModel__ToyModel_Conv2d_conv__ret_5, type = conv2d-fix} has been assigned to CPU: [DPU does not support activation type: LEAKYRELU. Its alpha is 0.100000, but DPU only support 0.1015625.].```
+vai_c_xir -x /PATH/TO/quantized.xmodel -a /PATH/TO/arch.json -o /OUTPUTPATH -n netname
 ```
 
 
