@@ -755,12 +755,16 @@ vai_c_xir -x /PATH/TO/quantized.xmodel -a /PATH/TO/arch.json -o /OUTPUTPATH -n n
 
 [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 
-[Vitis AI 3.0](https://xilinx.github.io/Vitis-AI/3.0/html/index.html)
+[Vitis AI 3.5](https://xilinx.github.io/Vitis-AI/3.5/html/index.html)
 
-[Vitis AI 3.0 github](https://github.com/Xilinx/Vitis-AI/tree/3.0)
+[Vitis AI 2.0 github](https://github.com/Xilinx/Vitis-AI/tree/2.0)
+
+[Vitis AI 3.5 github](https://github.com/Xilinx/Vitis-AI/tree/master)
 
 [Vitis-AI Tutorials github](https://github.com/Xilinx/Vitis-AI-Tutorials/tree/3.0)
 
-[KV260 DPU-TRD Petalinux 2022.1 Vivado Flow](https://www.hackster.io/shreyasnr/kv260-dpu-trd-petalinux-2022-1-vivado-flow-000c0b?f=1)
+[DPUCZDX8G for Zynq UltraScale+ MPSoCs Product Guide (PG338) 4.1](https://docs.amd.com/r/en-US/pg338-dpu/Vivado-DPU-TRD-Flow)
+
+[基于Vitis-AI的yolov5目标检测模型在ZCU102开发板上的部署过程分享](https://fpga.eetrend.com/blog/2022/100565582.html)
 * * *
 * * *
