@@ -217,9 +217,8 @@ docker run --gpus all nvidia/cuda:<cuda version>-cudnn<cudnn version>-runtime-ub
 
 <br><br>
 ## Install Vitis-AI
-The first step is to clone and follow the install steps for `Vitis AI 2.0 & 3.5` on the host machine.
+The first step is to clone and follow the install steps for `Vitis AI 3.5` on the host machine.
 ```
-git clone --branch 2.0 https://github.com/Xilinx/Vitis-AI # for DPU-TRC
 git clone https://github.com/Xilinx/Vitis-AI # for inspector, quatizer, and compiler. when version update, --branch 3.5
 cd Vitis-AI
 ```
@@ -459,7 +458,7 @@ vitis-ai-user@[HOST]:/workspace $ conda activate vitis-ai-pytorch
 ## Vivado(DPU-TRD) Flow
 Clone and follow the install steps for Vitis AI 2.0 (to add a project for the TRD flow) on the host machine.
 ```
-git clone --branch 2.0 https://github.com/Xilinx/Vitis-AI
+git clone --branch 2.0 https://github.com/Xilinx/Vitis-AI # for DPU-TRC
 cd Vitis-AI/dsa/DPU-TRD/
 ```
 
