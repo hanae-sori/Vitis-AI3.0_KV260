@@ -217,9 +217,10 @@ docker run --gpus all nvidia/cuda:<cuda version>-cudnn<cudnn version>-runtime-ub
 
 <br><br>
 ## Install Vitis-AI
-The first step is to clone and follow the install steps for `Vitis AI 3.5` on the host machine.
+The first step is to clone and follow the install steps for `Vitis AI 2.0 & 3.5` on the host machine.
 ```
-git clone https://github.com/Xilinx/Vitis-AI # when version update, --branch 3.5
+git clone --branch 2.0 https://github.com/Xilinx/Vitis-AI # for DPU-TRC
+git clone https://github.com/Xilinx/Vitis-AI # for inspector, quatizer, and compiler. when version update, --branch 3.5
 cd Vitis-AI
 ```
 [Vitis-AI github](https://github.com/Xilinx/Vitis-AI)
