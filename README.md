@@ -743,7 +743,7 @@ jupyter notebook --no-browser --port=8888 --ip=0.0.0.0
 
 ** Verify `.xmodel` with [netron.app](https://netron.app/). **
 
-![DetectMultiBackend_int.xmodel](./Image/DetectMultiBackend_int.xmodel.png)
+![dms_yolov5nLeaky.xmodel.png](./Image/dms_yolov5nLeaky.xmodel.png)
 
 
 <br><br>
