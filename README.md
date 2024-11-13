@@ -517,11 +517,11 @@ petalinux-config --get-hw-description=<DPU TRD>/prj/Vivado/prj/ --silentconfig
 >cp -r <DPU-TRD>/prj/Vivado/dpu_petalinux-bsp/xilinx_zcu102_bsp/project-spec/meta-user/recipes-vitis-ai/ ./project-spec/meta-user/
 >cp -r <DPU-TRD>/prj/Vivado/dpu_petalinux-bsp/xilinx_zcu102_bsp/project-spec/meta-user/recipes-apps/ ./project-spec/meta-user/
 >```
->**Download kv260/project-spec/`meta-user` and replace old one**
+>**Download KV260/project-spec/`meta-user` and replace old one**
 >```
 >cd <kv260>
->>cp -r meta-user/recipes-apps/ ./project-spec/meta-user/
->>cp -r meta-user/recipes-vitis-ai/ ./project-spec/meta-user/
+>cp -r meta-user/recipes-apps/ ./project-spec/meta-user/
+>cp -r meta-user/recipes-vitis-ai/ ./project-spec/meta-user/
 >cp -r meta-user/recipes-kernel/ ./project-spec/meta-user/
 >cp -r meta-user/recipes-core/ ./project-spec/meta-user/
 >```
@@ -545,7 +545,7 @@ vim project-spec/meta-user/conf/user-rootfsconfig
 >CONFIG_vitis-ai-library-dbg
 >```
 
->**To replace old syntax with the new one download kv260/`update_override.sh`**
+>**To replace old syntax with the new one download KV260/`update_override.sh`**
 >```
 >cd <kv260>
 >chmod +x override.sh
