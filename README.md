@@ -271,17 +271,17 @@ docker image list
    
 2. Load the Vitis AI Docker image & new container
 ```
-docker run --gpus all --name vitis-ai_3.5 -v <Vitis-AI install path>/Vitis-AI:/workspace -p 8888:8888 -it xilinx/vitis-ai-pytorch-gpu /bin/bash
+docker run --gpus all --name vitis-ai_3.5 -v <Vitis-AI install path>/Vitis-AI:/workspace -p 8888:8888 -it xilinx/vitis-ai-pytorch-gpu:latest /bin/bash
 ```
 <br>
 
-3. run container
+3. exec container
 ```
 docker ps -a
 ```
 >```
 >CONTAINER ID   IMAGE                                             COMMAND                  CREATED          STATUS                      PORTS     NAMES
->8fa95727aadd   xilinx/vitis-ai-pytorch-gpu:3.5.0.001-1eed93cde   "/opt/nvidia/nvidia_…"   2 hours ago      Up 2 hours                            competent_dijkstra
+>ca695755579a   xilinx/vitis-ai-pytorch-gpu:latest                "/opt/nvidia/nvidia_…"   2 hours ago      Up 2 hours                            vitis-ai_3.5
 >81ebf59e16a7   nvidia/cuda:12.6.2-cudnn-devel-ubuntu20.04        "/opt/nvidia/nvidia_…"   18 minutes ago   Exited (0) 18 minutes ago             dreamy_antonelli
 >8689cc2d2c3d   hello-world                                       "/hello"                 2 weeks ago      Exited (0) 2 weeks ago                friendly_pike
 >```
@@ -334,7 +334,7 @@ docker ps -a
 ```
 >```
 >CONTAINER ID   IMAGE                                        COMMAND                  CREATED             STATUS                  PORTS                                              NAMES
->ca695755579a   vitis-ai_3.5                                 "/opt/nvidia/nvidia_…"   About an hour ago   Up 11 seconds           0.0.0.0:8888->8888/tcp, :::8888->8888/tcp          vitis_ai_3.5
+>ca695755579a   xilinx/vitis-ai-pytorch-gpu:latest           "/opt/nvidia/nvidia_…"   About an hour ago   Up 11 seconds           0.0.0.0:8888->8888/tcp, :::8888->8888/tcp          vitis-ai_3.5
 >```
 
 
