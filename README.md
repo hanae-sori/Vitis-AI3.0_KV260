@@ -733,7 +733,7 @@ jupyter notebook --no-browser --port=8888 --ip=0.0.0.0
    ![proposed](./Image/inspect_DPUCZDX8G_ISA1_B4096.png)
 4. Run calibration with the quantizer.
    >```
-   >quantizer = torch_quantizer(quant_mode, model, dummy_input)
+   >quantizer = torch_quantizer(quant_mode, model, dummy_input, output_dir="quantize_result", bitwidth=8, device=device, target=target)
    >```
 5. Exporting quant config `.json`.
 6. Perform testing with the quantizer.
