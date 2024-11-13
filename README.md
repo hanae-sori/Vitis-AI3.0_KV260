@@ -715,9 +715,16 @@ LD_LIBRARY_PATH=samples/lib ./samples/bin/resnet50 img/bellpeppe-994958.JPEG
 
 <br><br>
 ## Quantizing the Model PyTorch Version (from pytorch_nndct)
-Proceed with the example in inspector_quantizer.ipynb in Jupyter Notebook.
+Proceed with the example in `inspector_quantizer.ipynb` in Jupyter Notebook.
+```
+### conda update jupyter
+jupyter notebook --no-browser --port=8888 --ip=0.0.0.0
+```
 
 1. Inspect the model using the inspector.
+   >```
+   >inspector.inspect(model, (dummy_input,), device=device, output_dir="inspect", image_format="png")
+   >```
    ![inspect_yolov5n](./Image/inspect_yolov5n.png)
 3. Remove the layers on CPU.
 * For YOLOv5, replace the environmental files in the YOLO directory with `.py.DPU` files and configure with `-LeakyReLU.yaml` to generate the model.
@@ -725,6 +732,9 @@ Proceed with the example in inspector_quantizer.ipynb in Jupyter Notebook.
 3. Verify full DPU operation with inspection.
    ![proposed](./Image/inspect_DPUCZDX8G_ISA1_B4096.png)
 4. Run calibration with the quantizer.
+   >```
+   >quantizer = torch_quantizer(quant_mode, model, dummy_input)
+   >```
 5. Exporting quant config `.json`.
 6. Perform testing with the quantizer.
 7. Conver module to `.xmodel`.
