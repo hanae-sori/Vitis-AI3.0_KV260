@@ -747,6 +747,7 @@ Proceed with the example in inspector_quantizer.ipynb in Jupyter Notebook.
 <br><br>
 ## Compile the Model PyTorch Version (vai_c_xir)
 For PyTorch, the quantizer NNDCT outputs the quantized model in the XIR format directly. Use vai_c_xir to compile it.
+
 For pre-built DPU xclbins in Vitis AI releases, you can find the corresponding arch.json file in Vitis AI docker (`/opt/vitis_ai/compiler/arch`). 
 ```
 vai_c_xir -x /PATH/TO/quantized.xmodel -a /PATH/TO/arch.json -o /OUTPUTPATH -n netname
